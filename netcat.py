@@ -68,6 +68,7 @@ class NetCat:
     def listen(self):
         self.socket.bind((self.args.target, self.args.port))
         self.socket.listen(5)
+        print(f'[*] Accepting connections on {self.args.target}:{self.args.port}')
         while True:
             client_socket, _ = self.socket.accept()
             client_thread = threading.Thread(
@@ -140,5 +141,4 @@ if __name__ == '__main__':
 
     nc = NetCat(args, buffer.encode())
     nc.run()
-
 
